@@ -946,27 +946,32 @@
     }
 
     .hero-image-container {
-        min-height: 300px;
+        min-height: 250px;
         order: 1;
     }
 
     .hero-image-placeholder {
-        width: min(300px, 80vw);
-        height: min(300px, 80vw);
+        width: 240px;
+        height: 240px;
+    }
+
+    .default-avatar {
+        font-size: 3.5rem;
     }
 
     .hero-title {
-        font-size: var(--font-size-4xl);
+        font-size: var(--font-size-3xl);
     }
 
     .hero-subtitle {
-        font-size: var(--font-size-2xl);
-        min-height: 50px;
+        font-size: var(--font-size-xl);
+        min-height: 40px;
     }
 
     .hero-description {
-        font-size: var(--font-size-base);
-        padding: 0 10px;
+        font-size: var(--font-size-sm);
+        padding: 0 15px;
+        line-height: 1.6;
     }
 
     .hero-buttons {
@@ -977,7 +982,8 @@
 
     .hero-buttons .btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 240px;
+        padding: 12px 20px;
     }
 
     .crop-container {
@@ -990,7 +996,26 @@
     }
 
     .smoke-particle {
-        filter: blur(30px);
+        filter: blur(25px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image-placeholder {
+        width: 180px;
+        height: 180px;
+    }
+
+    .default-avatar {
+        font-size: 2.8rem;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
     }
 }
 

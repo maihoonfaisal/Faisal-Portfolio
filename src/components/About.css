@@ -197,4 +197,17 @@
     .timeline-item {
         padding: 1rem;
     }
+
+    .about-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .timeline-content h4 {
+        font-size: 0.9rem;
+    }
 }
