@@ -1,0 +1,169 @@
+.contact {
+    background: rgba(10, 12, 25, 0.6);
+    position: relative;
+}
+
+/* 4-card responsive grid */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* ── Glass info card ── */
+.info-card {
+    position: relative;
+    padding: 2rem 1.25rem 1.75rem;
+    text-align: center;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(20, 25, 40, 0.88) 0%, rgba(12, 18, 30, 0.92) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+    /* no backdrop-filter — keeps edges crisp */
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Glowing top-edge line */
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(100, 220, 160, 0.6) 40%,
+            rgba(80, 180, 240, 0.5) 60%,
+            transparent 100%);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* Ambient corner blob */
+.info-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(80, 200, 140, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(16px);
+    pointer-events: none;
+}
+
+.info-card:hover,
+.info-card--link:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(100, 220, 160, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(100, 220, 160, 0.12);
+}
+
+.info-card:hover::before {
+    opacity: 1;
+}
+
+/* Clickable card cursor */
+.info-card--link {
+    cursor: pointer;
+}
+
+.info-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(100, 220, 160, 0.22) 0%, rgba(80, 180, 240, 0.14) 100%);
+    border: 1px solid rgba(100, 220, 160, 0.25);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: rgba(160, 240, 200, 0.95);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.info-card--link:hover .info-icon {
+    transform: scale(1.12);
+    box-shadow: 0 0 18px rgba(100, 220, 160, 0.25);
+}
+
+/* LinkedIn brand colour */
+.info-icon--linkedin {
+    background: linear-gradient(135deg, rgba(10, 102, 194, 0.25) 0%, rgba(10, 102, 194, 0.12) 100%);
+    border-color: rgba(10, 102, 194, 0.4);
+    color: #7ab8f5;
+}
+
+.info-card--link:hover .info-icon--linkedin {
+    box-shadow: 0 0 18px rgba(10, 102, 194, 0.3);
+}
+
+/* GitHub brand colour */
+.info-icon--github {
+    background: linear-gradient(135deg, rgba(80, 200, 145, 0.2) 0%, rgba(50, 150, 100, 0.12) 100%);
+    border-color: rgba(80, 200, 145, 0.35);
+    color: rgba(140, 230, 185, 0.95);
+}
+
+.info-card--link:hover .info-icon--github {
+    box-shadow: 0 0 18px rgba(80, 200, 145, 0.25);
+}
+
+.info-card h3 {
+    color: #d8d8e0;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.info-card p {
+    color: rgba(160, 165, 178, 0.88);
+    margin: 0 0 0.6rem;
+    font-size: 0.88rem;
+}
+
+/* "Click to email ↗" label */
+.info-card-cta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(100, 220, 160, 0.7);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.info-card--link:hover .info-card-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .contact-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+}

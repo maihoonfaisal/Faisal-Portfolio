@@ -1,0 +1,256 @@
+.skills {
+    background: rgba(10, 12, 25, 0.6);
+    position: relative;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+/* Category card — glass + gradient border glow */
+.skill-category {
+    position: relative;
+    padding: 2rem 1.75rem 2rem;
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(20, 25, 40, 0.85) 0%, rgba(12, 18, 30, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    /* No backdrop-filter — keeps edges crisp */
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    overflow: hidden;
+}
+
+/* Glowing top-edge line */
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(100, 220, 160, 0.6) 40%,
+            rgba(80, 180, 240, 0.5) 60%,
+            transparent 100%);
+    border-radius: 100%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+/* Ambient corner blob */
+.skill-category::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(80, 200, 140, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.skill-category:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(100, 220, 160, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.skill-category:hover::before {
+    opacity: 1;
+}
+
+.skill-category:hover::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Category heading */
+.category-title {
+    text-align: center;
+    color: #c8c8c8;
+    margin-bottom: 1.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(100, 220, 160, 0.7), rgba(80, 180, 240, 0.5));
+    border-radius: 2px;
+}
+
+/* ── Icon chips grid ── */
+/* Fixed grid: always 3 columns so items align neatly */
+.skills-chips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* Individual skill card */
+.skill-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1.5rem 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    cursor: default;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 110px;
+}
+
+/* Shimmer sweep */
+.skill-chip::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -60%;
+    width: 60%;
+    height: 300%;
+    background: linear-gradient(105deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.08) 50%,
+            transparent 70%);
+    transition: top 0.4s ease, left 0.45s ease;
+    pointer-events: none;
+}
+
+.skill-chip:hover::before {
+    top: -50%;
+    left: 130%;
+}
+
+.skill-chip:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(100, 220, 160, 0.35);
+    transform: translateY(-7px) scale(1.06);
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.45),
+        0 0 18px rgba(80, 200, 140, 0.14);
+}
+
+/* ── Spin animation on icon hover ── */
+@keyframes spinGlow {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(180deg) scale(1.15);
+    }
+
+    100% {
+        transform: rotateY(360deg) scale(1);
+    }
+}
+
+/* Big icon */
+.skill-icon {
+    font-size: 3.2rem;
+    color: #c0c0c0;
+    transition: all 0.35s ease;
+    display: inline-flex;
+    line-height: 1;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+}
+
+.skill-chip:hover .skill-icon {
+    color: #e8ffe8;
+    filter: drop-shadow(0 0 14px rgba(120, 240, 180, 0.9));
+    animation: spinGlow 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Skill name */
+.skill-name {
+    font-weight: 600;
+    color: rgba(220, 220, 230, 0.9);
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.skill-chip:hover .skill-name {
+    color: #ffffff;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .skills-chips {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .skill-chip {
+        padding: 1rem 0.5rem 0.8rem;
+        min-height: 90px;
+    }
+
+    .skill-icon {
+        font-size: 2.2rem;
+    }
+
+    .skill-name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-chips {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .skill-chip {
+        padding: 0.75rem 0.25rem;
+        min-height: 80px;
+    }
+
+    .skill-icon {
+        font-size: 1.8rem;
+    }
+
+    .skill-name {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .skills-chips {
+        grid-template-columns: 1fr;
+    }
+}
