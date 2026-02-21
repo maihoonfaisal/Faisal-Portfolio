@@ -92,10 +92,10 @@
         background: rgba(3, 7, 18, 0.98);
         backdrop-filter: blur(15px);
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100svh - 70px);
         text-align: center;
         transition: left var(--transition-base);
-        padding: 4rem 0;
+        padding: 2rem 0;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         z-index: 1000;
         overflow-y: auto;

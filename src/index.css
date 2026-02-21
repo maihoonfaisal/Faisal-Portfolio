@@ -81,10 +81,16 @@
   transition: all 0.5s ease;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 html {
   scroll-behavior: smooth;
-  /* Smooth scroll with padding to prevent content hiding under navbar */
-  scroll-padding-top: 100px;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -92,7 +98,6 @@ body {
   background: var(--color-bg-darker);
   color: var(--color-text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
 
   /* High-quality rendering for all text and images */
   -webkit-font-smoothing: antialiased;
@@ -167,6 +172,8 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .section {
