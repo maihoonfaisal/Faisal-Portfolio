@@ -736,17 +736,42 @@ a:hover {
 /* ===========================
    RESPONSIVE DESIGN
    =========================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --font-size-5xl: 2.25rem;
+    --font-size-4xl: 2rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   :root {
-    --font-size-5xl: 2rem;
-    --font-size-4xl: 1.75rem;
-    --font-size-3xl: 1.5rem;
-    --spacing-xl: 4rem;
+    --font-size-5xl: 1.9rem;
+    --font-size-4xl: 1.6rem;
+    --font-size-3xl: 1.3rem;
+    --font-size-2xl: 1.15rem;
+    --spacing-xl: 3.5rem;
+    --spacing-lg: 2.5rem;
+    --spacing-md: 1.25rem;
   }
 
+  /* Sections shouldn't force 100vh on mobile */
   .section {
-    min-height: auto;
+    min-height: unset;
     padding: var(--spacing-lg) 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  /* Section title centering fix for small screens */
+  .section-title {
+    font-size: var(--font-size-4xl);
+    white-space: normal;
+    word-break: break-word;
   }
 
   .grid-2,
@@ -755,27 +780,67 @@ a:hover {
   }
 
   .btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 1.6rem;
     font-size: var(--font-size-sm);
+    white-space: nowrap;
+  }
+
+  /* Glass card hover: disable translate on touch devices */
+  .glass-card:hover {
+    transform: none;
   }
 }
 
+/* Small mobile */
 @media (max-width: 480px) {
-  .container {
-    padding: 0 var(--spacing-sm);
-  }
-
   :root {
-    --font-size-5xl: 1.75rem;
-    --font-size-4xl: 1.5rem;
+    --font-size-5xl: 1.6rem;
+    --font-size-4xl: 1.4rem;
+    --font-size-3xl: 1.2rem;
     --spacing-xl: 3rem;
     --spacing-lg: 2rem;
+    --spacing-md: 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
   }
 
   .section {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+  }
+
+  .section-title {
+    font-size: var(--font-size-4xl);
   }
 }
+
+/* Very small phones (Galaxy Fold, etc) */
+@media (max-width: 360px) {
+  :root {
+    --font-size-5xl: 1.4rem;
+    --font-size-4xl: 1.25rem;
+    --spacing-lg: 1.75rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Safe area – notched phones (iPhone X+, etc) */
+@supports (padding: max(0px)) {
+  .navbar {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .section {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
 
 /* ===========================
    SCROLL BAR
