@@ -2,7 +2,7 @@
 
 A modern, responsive developer portfolio built with **React + Vite**, featuring glassmorphism cards, smooth animations, a dynamic profile picture system, and a clean dark aesthetic.
 
-**Live →** [your-vercel-url.vercel.app](https://your-vercel-url.vercel.app)
+**Live →** [your-vercel-url.vercel.app](https://faisal-portfolio-two.vercel.app/)
 
 ---
 
