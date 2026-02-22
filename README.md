@@ -33,8 +33,8 @@ A modern, responsive developer portfolio built with **React + Vite**, featuring 
 
 ```bash
 # Clone
-git clone https://github.com/maihoonfaisal/portfolio.git
-cd portfolio
+git clone https://github.com/maihoonfaisal/faisal-portfolio.git
+cd faisal-portfolio
 
 # Install
 npm install
